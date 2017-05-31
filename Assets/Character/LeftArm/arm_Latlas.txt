@@ -1,0 +1,27 @@
+
+arm_L.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arm
+  rotate: false
+  xy: 65, 18
+  size: 67, 62
+  orig: 67, 62
+  offset: 0, 0
+  index: -1
+Hand
+  rotate: true
+  xy: 134, 29
+  size: 51, 63
+  orig: 51, 63
+  offset: 0, 0
+  index: -1
+shouler
+  rotate: false
+  xy: 2, 2
+  size: 61, 78
+  orig: 61, 78
+  offset: 0, 0
+  index: -1

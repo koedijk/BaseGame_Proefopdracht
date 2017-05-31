@@ -1,0 +1,55 @@
+
+player.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Backtoe
+  rotate: false
+  xy: 2, 2
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+Battery
+  rotate: false
+  xy: 2, 14
+  size: 68, 93
+  orig: 68, 93
+  offset: 0, 0
+  index: -1
+Foot
+  rotate: false
+  xy: 212, 48
+  size: 68, 59
+  orig: 68, 59
+  offset: 0, 0
+  index: -1
+Fronttoe
+  rotate: true
+  xy: 359, 53
+  size: 54, 55
+  orig: 54, 55
+  offset: 0, 0
+  index: -1
+Leg
+  rotate: true
+  xy: 282, 55
+  size: 52, 75
+  orig: 52, 75
+  offset: 0, 0
+  index: -1
+Pelvis
+  rotate: false
+  xy: 72, 28
+  size: 64, 79
+  orig: 64, 79
+  offset: 0, 0
+  index: -1
+Torso
+  rotate: false
+  xy: 138, 45
+  size: 72, 62
+  orig: 72, 62
+  offset: 0, 0
+  index: -1

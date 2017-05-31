@@ -1,0 +1,55 @@
+{
+"skeleton": { "hash": "UbtRs7WVMJYZoQPGW/wPt2+0Qkk", "spine": "3.5.51", "width": 89, "height": 107, "images": "./player/" },
+"bones": [
+	{ "name": "root", "x": 16.92, "y": 119.04 }
+],
+"slots": [
+	{ "name": "Head", "bone": "root", "attachment": "Head" }
+],
+"skins": {
+	"default": {
+		"Head": {
+			"Head": { "x": 14.43, "y": 15.31, "width": 89, "height": 107 }
+		}
+	}
+},
+"animations": {
+	"Idle": {
+		"bones": {
+			"root": {
+				"translate": [
+					{
+						"time": 0,
+						"x": -0.61,
+						"y": -1,
+						"curve": [ 0.375, 0.62, 0.716, 1 ]
+					},
+					{ "time": 0.2, "x": 0, "y": 0 },
+					{
+						"time": 1.2,
+						"x": -4.67,
+						"y": -7.67,
+						"curve": [ 0.243, 0, 0.68, 0.71 ]
+					},
+					{ "time": 2, "x": -0.61, "y": -1 }
+				]
+			}
+		}
+	},
+	"Run": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 14.63, "y": -7.31 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			}
+		}
+	}
+}
+}
