@@ -7,14 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     private float speed = 5f;
     private Transform graphics;
-    [SerializeField]
-    private SkeletonAnimation[] skeletonAnimations;
+    private AnimationsHolder _animHolder;
+    private LookAtMouse _mouse;
     private Rigidbody2D rigid;
-
     private float x;
 
     void Awake()
     {
+        _animHolder = GetComponent<AnimationsHolder>();
+        _mouse = GetComponent<LookAtMouse>();
         graphics = transform;
         rigid = GetComponent<Rigidbody2D>();
     }
@@ -22,19 +23,28 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         x = Input.GetAxis("Horizontal") * speed;
-        if (x > 0.2)
+        if (Input.GetButton("Horizontal"))
         {
-            graphics.localRotation = Quaternion.Euler(0, 0, 0);
+            _animHolder.ChangeAnimation("Run");
         }
-        if(x < 0.2)
+        else
         {
-            graphics.localRotation = Quaternion.Euler(0,180,0);
+            _animHolder.ChangeAnimation("Idle");
         }
+        if (x > 0.3)
+        {
+            _animHolder.PlayerRotate(false);
+        }
+        else if (x < -0.3)
+        {
+            _animHolder.PlayerRotate(true);
+            
+        }
+        _animHolder.GunRotate(_mouse.Angle);
     }
 
     void FixedUpdate()
     {
         rigid.velocity = new Vector2(x,rigid.velocity.y);
     }
-
 }
