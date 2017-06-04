@@ -23,6 +23,13 @@ public class AnimationsHolder : MonoBehaviour
         _obj.Add("Head", _animations[3]); 
     }
 
+    public float ShoulderPos()
+    {
+        float Y = 0;
+        Y =_obj["Arm_L"].skeleton.FindBone("shouler").WorldY;
+        return Y;
+    }
+
     public void ChangeAnimation(string anim)
     {
         _obj["Body"].AnimationName = anim;
@@ -41,10 +48,14 @@ public class AnimationsHolder : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (!rot)
+        else
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
+    public void GunPos(Vector2 a)
+    {
+        a = new Vector2(_obj["Arm_R"].skeleton.FindBone("shoulder").x, _obj["Arm_R"].skeleton.FindBone("shoulder").y);
+    }
 }

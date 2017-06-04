@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float speed = 5f;
     private Transform graphics;
     private AnimationsHolder _animHolder;
+    private AudioSource _audioSource;
+    private AudioClip _audioClip;
     private LookAtMouse _mouse;
     private Rigidbody2D rigid;
     private float x;
@@ -18,6 +20,9 @@ public class PlayerController : MonoBehaviour
         _mouse = GetComponent<LookAtMouse>();
         graphics = transform;
         rigid = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
+        _audioClip = Resources.Load("Audio/Footstep") as AudioClip;
+        _audioSource.clip = _audioClip;
     }
 
     void Update()
@@ -26,19 +31,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Horizontal"))
         {
             _animHolder.ChangeAnimation("Run");
+            if(!_audioSource.isPlaying)
+            _audioSource.PlayOneShot(_audioClip);
         }
         else
         {
             _animHolder.ChangeAnimation("Idle");
-        }
-        if (x > 0.3)
-        {
-            _animHolder.PlayerRotate(false);
-        }
-        else if (x < -0.3)
-        {
-            _animHolder.PlayerRotate(true);
-            
         }
         _animHolder.GunRotate(_mouse.Angle);
     }
