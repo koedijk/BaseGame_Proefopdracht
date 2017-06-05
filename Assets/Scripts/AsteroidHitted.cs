@@ -18,7 +18,6 @@ public class AsteroidHitted : MonoBehaviour
 	}
     void OnCollisionEnter2D(Collision2D coll)
     {
-        Debug.Log(coll);
         if (coll.collider.tag == "Bullet")
         {
             Destroy(coll.gameObject);

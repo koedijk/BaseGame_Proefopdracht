@@ -12,10 +12,11 @@ public class GunController : MonoBehaviour
     private GameObject _MuzzleObj;
     private GameObject _ShoulderObj;
     private GameObject _bullet;
-    [SerializeField]
     private AudioSource _audioSource;
-    [SerializeField]
     private AudioClip _clip;
+
+    private float _cooldown = 0.2f;
+    private bool _canshoot = true;
 
     private Vector2 _muzzle;
     private Vector2 _shoulder;
@@ -47,23 +48,31 @@ public class GunController : MonoBehaviour
 
     void Shoot()
     {
-        
-        Vector3 pos = new Vector3(_MuzzleObj.transform.position.x,_MuzzleObj.transform.position.y);
-        GameObject a = Instantiate(_bullet, pos,Quaternion.identity);
-        if (_mouse.LookLeft == true)
-        { 
-            Quaternion rot = new Quaternion(0, 0, -transform.rotation.w, transform.rotation.x);
-            a.transform.rotation = rot;
-        }
-        else if(_mouse.LookLeft == false)
+        if (_canshoot == true)
         {
-            Quaternion rot = new Quaternion(0, 0, -transform.rotation.x, transform.rotation.w);
-            a.transform.rotation = rot;
+            _canshoot = false;
+            Vector3 pos = new Vector3(_MuzzleObj.transform.position.x, _MuzzleObj.transform.position.y);
+            GameObject a = Instantiate(_bullet, pos, Quaternion.identity);
+            if (_mouse.LookLeft == true)
+            {
+                Quaternion rot = new Quaternion(0, 0, -transform.rotation.w, transform.rotation.x);
+                a.transform.rotation = rot;
+            }
+            else if (_mouse.LookLeft == false)
+            {
+                Quaternion rot = new Quaternion(0, 0, -transform.rotation.x, transform.rotation.w);
+                a.transform.rotation = rot;
+            }
+            _audioSource.clip = _clip;
+            _audioSource.Play();
+            StartCoroutine(WaitForCooldown());
+
         }
-        _audioSource.clip = _clip;
-        _audioSource.Play();
+    }
 
-
-
+    IEnumerator WaitForCooldown()
+    {
+        yield return new WaitForSeconds(_cooldown);
+        _canshoot = true;
     }
 }
